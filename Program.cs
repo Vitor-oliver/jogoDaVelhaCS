@@ -56,17 +56,129 @@ bool testarDeuVelha(){
     return deuVelha;
 }
 
-void receberJogadaMaquina(){
+bool receberJogadaMaquina(){
     Random random = new Random();
     int jogadaMaquina = random.Next(0, 12);
     bool testeJogadaMaquina = true;
+    char maquina;
+    if(jogador1 == 'x'){
+        maquina = 'o';
+    }else{
+        maquina = 'x';
+    }
 
-
+    do{
+        
+        if(testeJogadaMaquina == false){
+            Console.WriteLine("Escolha uma casa valida:");
+            mostrarTabuleiro();
+            jogadaMaquina = Convert.ToInt32(Console.ReadLine());
+            if(jogadaMaquina < 1 && jogadaMaquina > 9){
+                testeJogadaMaquina = false;
+            }else{
+                testeJogadaMaquina = true;
+            }
+        }
+        else if(testeJogadaMaquina == true){
+            switch(jogadaMaquina){
+        case 1:
+            if(tabuleiro[0,0] != '1'){
+                testeJogadaMaquina = false;
+            }
+            else{
+                tabuleiro[0,0] = maquina;
+                testeJogadaMaquina = true;
+            }
+        break;
+        case 2:
+            if(tabuleiro[0,1] != '2'){
+                testeJogadaMaquina = false;
+            }
+            else{
+                tabuleiro[0,1] = maquina;
+                testeJogadaMaquina = true;
+            }
+        break;
+        case 3:
+            if(tabuleiro[0,2] != '3'){
+                testeJogadaMaquina = false;
+            }
+            else{
+                tabuleiro[0,2] = maquina;
+                testeJogadaMaquina = true;
+            }
+        break;
+        case 4:
+            if(tabuleiro[1,0] != '4'){
+                testeJogadaMaquina = false;
+            }
+            else{
+                tabuleiro[1,0] = maquina;
+                testeJogadaMaquina = true;
+            }
+        break;
+        case 5:
+            if(tabuleiro[1,1] != '5'){
+                testeJogadaMaquina = false;
+            }
+            else{
+                tabuleiro[1,1] = maquina;
+                testeJogadaMaquina = true;
+            }
+        break;
+        case 6:
+            if(tabuleiro[1,2] != '6'){
+                testeJogadaMaquina = false;
+            }
+            else{
+                tabuleiro[1,2] = maquina;
+                testeJogadaMaquina = true;
+            }
+        break;
+        case 7:
+            if(tabuleiro[2,0] != '7'){
+                testeJogadaMaquina = false;
+            }
+            else{
+                tabuleiro[2,0] = maquina;
+                testeJogadaMaquina = true;
+            }
+        break;
+        case 8:
+            if(tabuleiro[2,1] != '8'){
+                testeJogadaMaquina = false;
+            }
+            else{
+                tabuleiro[2,1] = maquina;
+                testeJogadaMaquina = true;
+            }
+        break;
+        case 9:
+            if(tabuleiro[2,2] != '9'){
+                testeJogadaMaquina = false;
+            }
+            else{
+                tabuleiro[2,2] = maquina;
+                testeJogadaMaquina = true;
+            }
+        break;
+        default:
+            testeJogadaMaquina = false;
+            Console.WriteLine("Escolha uma casa entre 1 e 9:");
+        break;
+    }
+        }
+    }while(testeJogadaMaquina == false);
+    
+    return testeJogadaMaquina;
 }
 
 bool receberJogadaJogador(){
     int jogadaJogador = Convert.ToInt32(Console.ReadLine());
     bool testeJogadaJogador = true;
+
+    //trocar a entrada para dentro do if pois assim não preciso de um if e um switch junto com o writeline e o mostrarTabuleiro()
+
     //if(se está dentro do numero de casas)
     /*
     do{
